@@ -9,7 +9,6 @@
 	<link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Work+Sans&display=swap" rel="stylesheet">
 	<meta name="description" content="">
 	<link rel="stylesheet" href="./assets/style.css">
-	<script src="../FrontEnd/assets/js/home.js"></script>
 </head>
 <body>
 <header>
@@ -38,10 +37,10 @@
 	<section id="portfolio">
 		<h2>Mes Projets</h2>
 		<div class="button_filters_block">
-		<button class="button_filters">Tous</button>
-		<button class="button_filters">Objets</button>
-		<button class="button_filters">Appartements</button>
-		<button class="button_filters">Hôtels & restaurants</button>
+		<button onclick="filterWorks('Tous')" class="button_filters">Tous</button>
+		<button onclick="filterWorks('Objets')" class="button_filters">Objets</button>
+		<button onclick="filterWorks('Appartements')" class="button_filters">Appartements</button>
+		<button onclick="filterWorks('Hotels & restaurants')" class="button_filters">Hotels & restaurants</button>
 		</div>
 		<div class="gallery">	
 		</div>
@@ -68,6 +67,6 @@
 		</ul>
 	</nav>
 </footer>
+	<script src="../FrontEnd/assets/js/home.js"></script>
 </body>
-
 </html>
