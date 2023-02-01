@@ -137,6 +137,15 @@ li:hover {
 	width: 100%;
 
 }
+
+.displayOn {
+	width: 100%;
+
+}
+.displayNone {
+	display: none;
+}
+
 #contact {
 	width: 50%;
 margin: auto;
@@ -215,6 +224,12 @@ footer nav ul {
    
    
 }
+.button_filters:active{
+	border: 2px solid #FFFFFF;
+	background-color: #1D6154;
+	color: #FFFFFF;
+	cursor: pointer;
+}
 .button_filters_block {
    display: flex;
    flex-direction: row;
@@ -229,15 +244,5 @@ footer nav ul {
    
 }
 
-   
-}
-.hide {
-  display: none;
-}
-.active {
-    border: 2px solid #FFFFFF;
-	background-color: #1D6154;
-	color: #FFFFFF;
-	cursor: pointer;
-}
+
 
