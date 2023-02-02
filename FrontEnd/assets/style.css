@@ -5,7 +5,7 @@
 
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
+abbr, acronym, address, big, cite, code,
 del, dfn, em, img, ins, kbd, q, s, samp,
 small, strike, strong, sub, sup, tt, var,
 b, u, i, center,
@@ -90,14 +90,29 @@ nav ul {
 	list-style-type: none;
 
 }
-nav li {
+a, a:link, nav li {
 	padding: 0 10px;
 	font-size: 1.2em;
+	text-decoration: none;
+	color: black
 }
 
-li:hover {
+a:hover, li:hover {
 	color: #B1663C;
 }
+#mdp {
+	width: 100%;
+	padding: 0 10px;
+	font-size: 1.2em;
+	color: #1D6154;
+	text-decoration: underline;
+		
+}
+
+#mdpp {
+	text-align: center;
+}
+
 #introduction {
 	display: flex;
 	align-items: center;
@@ -177,6 +192,40 @@ margin: auto;
 	border: none;
 	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
 }
+
+#login {
+	width: 50%;
+	margin: auto;
+	margin-top: 162px;
+}
+#login > * {
+	text-align: center;
+
+}
+#login h2{
+	margin-bottom: 20px;
+}
+#login form {
+	text-align: left;
+	margin-top:30px;
+	display: flex;
+	flex-direction: column;
+}
+
+#login input {
+	height: 50px;
+	font-size: 1.2em;
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+#login label {
+	margin: 2em 0 1em 0;
+}
+#login textarea {
+	border: none;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+}
+
 
 input[type="submit"]{
 	font-family: 'Syne';
