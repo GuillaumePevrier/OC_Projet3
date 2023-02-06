@@ -4,7 +4,9 @@ const form = {
   submit: document.getElementById('submit'),
 };
 
-
+var isLoggedIn = false;
+ sessionStorage.setItem("isLoggedIn", isLoggedIn);
+ 
 let button = form.submit.addEventListener("click", (e) => {
   e.preventDefault();
  const login = "http://localhost:5678/api/users/login";
@@ -22,17 +24,36 @@ let button = form.submit.addEventListener("click", (e) => {
   })
 	.then((response) => response.json())
 	.then((data) => {
-	  console.log(data);
-	  // code here //
+	  
 	  if (data.message === "user not found") {
-		alert("Erreur dans l’identifiant ou le mot de passe"); /*displays error message*/
-	  } else {
-		window.open(
-		  "index.html"
-		); /*opens the target page while Id & password matches*/
+		alert("Erreur dans l’identifiant ou le mot de passe");
+	  } 
+		if (sessionStorage.getItem("loggedIn") === "true") {
+		isLoggedIn = true;
+		}
+		else {
+			location.assign("index.html"); 
 	  }
+		var token = data.token;
+		sessionStorage.setItem("token", token);
+		
+		
+		console.log(token, isLoggedIn);
 	})
 	.catch((err) => {
 	  console.log(err);
 	});
 });
+
+
+
+
+//var isLoggedIn = false;
+//if (localStorage.getItem("loggedIn") === "true") {
+//	isLoggedIn = true;
+//}
+//if (isLoggedIn) {
+//	console.log("L'utilisateur est connecté");
+//} else {
+//	console.log("L'utilisateur n'est pas connecté");
+//}

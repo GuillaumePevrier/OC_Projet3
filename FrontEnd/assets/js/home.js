@@ -49,3 +49,16 @@ const worksFilter = async () => {
 };
 worksFilter();
 
+
+
+function displayContent() {
+if (isLoggedIn) {
+	document.getElementById('.loginlink').innerHTML = "logout";
+	document.getElementById('.loginlink').href = "/logout";
+} else {
+	document.getElementById('.loginlink').innerHTML = "login";
+	document.getElementById('.loginlink').href = "/login";
+}
+}	
+  
+  
