@@ -3,9 +3,6 @@ const form = {
   password: document.getElementById("password"),
   submit: document.getElementById('submit'),
 };
-
-var isLoggedIn = false;
- sessionStorage.setItem("isLoggedIn", isLoggedIn);
  
 let button = form.submit.addEventListener("click", (e) => {
   e.preventDefault();
@@ -24,20 +21,17 @@ let button = form.submit.addEventListener("click", (e) => {
   })
 	.then((response) => response.json())
 	.then((data) => {
-	  
+	  var token = data.token;
+	  var isLoggedIn = true;
 	  if (data.message === "user not found") {
 		alert("Erreur dans l’identifiant ou le mot de passe");
 	  } 
-		if (sessionStorage.getItem("loggedIn") === "true") {
-		isLoggedIn = true;
-		}
 		else {
+			sessionStorage.setItem("isLoggedIn", isLoggedIn);
+			sessionStorage.setItem("token", token);
+			//open("index.html");
 			location.assign("index.html"); 
-	  }
-		var token = data.token;
-		sessionStorage.setItem("token", token);
-		
-		
+	  }		
 		console.log(token, isLoggedIn);
 	})
 	.catch((err) => {

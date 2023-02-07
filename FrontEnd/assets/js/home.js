@@ -24,7 +24,7 @@ const worksDisplay = async () => {
 	)
 	.join("");
 };
-worksDisplay();
+	  worksDisplay();
 
 const worksFilter = async () => {
 	await fetchWorks();
@@ -40,25 +40,40 @@ const worksFilter = async () => {
 				if(tag in figure.dataset || tag === "Tous"){
 					figure.classList.replace("displayNone", "displayOn");
 				}
-				console.log(figure);
 			}
 		});
 	}
 
 
 };
-worksFilter();
+	  worksFilter();
 
-
+let isLoggedIn = sessionStorage.getItem("isLoggedIn");
+	console.log(isLoggedIn);
+	if (sessionStorage.getItem("isLoggedIn") === null) {
+	isLoggedIn = false;
+	
+	}
 
 function displayContent() {
-if (isLoggedIn) {
-	document.getElementById('.loginlink').innerHTML = "logout";
-	document.getElementById('.loginlink').href = "/logout";
-} else {
-	document.getElementById('.loginlink').innerHTML = "login";
-	document.getElementById('.loginlink').href = "/login";
+	
+	if (isLoggedIn) {
+	document.querySelector('.loginlink').innerHTML = "logout";
+	document.querySelector('.header_admin_none').classList.replace("header_admin_none", "header_admin_visible");
+	document.querySelector('.modifierAdd_none').classList.replace("modifierAdd_none", "modifierAdd_visible");
+	} 
+	
+	else {
+	document.querySelector('.loginlink').innerHTML = "login";
+	document.querySelector('.loginlink').href = "/login";
+	}
 }
-}	
+		displayContent();
   
-  
+
+const element = document.getElementById("loginId");
+		element.addEventListener("click", myFunction);
+		
+		function myFunction() {
+			sessionStorage.clear()
+		}
