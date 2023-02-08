@@ -23,6 +23,18 @@ const worksDisplay = async () => {
 		`,
 	)
 	.join("");
+	document.querySelector('.galleryModal').innerHTML = worksData.map(
+		(works) => 
+		`<figure id="${works.id}" class="displayOn" data-${works.category.name}>
+		 <div id="${works.categoryId}"></div>
+		 <div id="${works.category.name}"></div>
+		 <div id="${works.userId}"></div>
+		 <img src="${works.imageUrl}" crossOrigin="anonymous"/>
+		 <p>éditer</p>
+		 </figure>
+		`,
+	)
+	.join("");
 };
 	  worksDisplay();
 
@@ -49,7 +61,6 @@ const worksFilter = async () => {
 	  worksFilter();
 
 let isLoggedIn = sessionStorage.getItem("isLoggedIn");
-	console.log(isLoggedIn);
 	if (sessionStorage.getItem("isLoggedIn") === null) {
 	isLoggedIn = false;
 	
@@ -65,7 +76,7 @@ function displayContent() {
 	
 	else {
 	document.querySelector('.loginlink').innerHTML = "login";
-	document.querySelector('.loginlink').href = "/login";
+	document.querySelector('.loginlink').href = "./login.html";
 	}
 }
 		displayContent();
@@ -75,5 +86,18 @@ const element = document.getElementById("loginId");
 		element.addEventListener("click", myFunction);
 		
 		function myFunction() {
-			sessionStorage.clear()
+			sessionStorage.clear();
 		}
+		
+const modalContainer = document.querySelector(".modal-container");
+		const modalTriggers = document.querySelectorAll(".modal-trigger");
+		
+		modalTriggers.forEach(trigger => trigger.addEventListener("click", toggleModal))
+		
+		function toggleModal(){
+		  modalContainer.classList.toggle("active")
+		}
+
+		
+		
+

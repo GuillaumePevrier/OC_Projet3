@@ -12,10 +12,48 @@
 	<link rel="stylesheet" href="./assets/style.css">
 	<script src="https://kit.fontawesome.com/abc919a6aa.js" crossorigin="anonymous"></script>
 </head>
+
+
+
 <body>
+	<div class="modal-container">
+	
+	  <div class="overlay modal-trigger"></div>
+	 
+	  <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
+		<button aria-label="close modal"class="close-modal modal-trigger">X</button>
+		<button aria-label="back modal"class="back-modal"><i class="fa-solid fa-arrow-left"></i></button>
+		<div class="modal1_visible">
+			<h1 id="modalTitle">Galerie photo</h1>
+			<div id="dialogDesc" class="galleryModal">					
+			</div>
+			<hr>
+			<button id="bouttonValiderNext"class="buttonAddPic">Ajouter une photo</button>
+			<button class="buttonDelAllPic">Supprimer la galerie</button>
+		</div>
+		<div class="modal2_none">
+			<h1 id="modalTitle">Ajout photo</h1>
+			
+			<input class="modal2ImageInput" type="file" id="imagesAdd" name="images" accept="image/png, image/jpeg">
+			<label class="modal2TitleInput">Titre</label>
+			<input class="modal2Input" type="text" name="Titre" id="titreAdd">
+			<label class="modal2TitleInput">Catégorie</label>
+			<select class="modal2Input" name="categories" id="categoriesAdd">
+				<option value=""></option>
+				<option value="Objets">Objets</option>
+				<option value="Appartements">Appartements</option>
+				<option value="Hotels & restaurants">Hotels & restaurants</option>
+			</select>
+			<hr>
+			<input class="buttonValider "type="submit" value="Valider" >
+		</div>
+	  </div>
+	
+	</div>
+	
 <div class="header_admin_none">
-	<i id="i-pen" class="fa-solid fa-pen-to-square"></i>
-	<h2 class="h2_header_admin">Mode édition</h2>
+	<i id="i-pen" class="fa-solid fa-pen-to-square modal-trigger"></i>
+	<h2 class="h2_header_admin modal-trigger">Mode édition</h2>
 	<button class="button_header_admin">publier les changements</button>
 </div>	
 <header>
@@ -45,8 +83,8 @@
 		<div class="modifierAddBloc">
 		<h2>Mes Projets</h2>
 		<div class="modifierAdd_none">
-		<i id="i-pen-add" class="fa-solid fa-pen-to-square"></i>
-		<p>modifier</p>
+		<i id="i-pen-add" class="fa-solid fa-pen-to-square modal-trigger"></i>
+		<p class="p_mofifier modal-trigger">modifier</p>
 		</div>
 		</div>
 		<div class="button_filters_block">
