@@ -22,7 +22,6 @@
 	 
 	  <div class="modal" role="dialog" aria-labelledby="modalTitle" aria-describedby="dialogDesc">
 		<button aria-label="close modal"class="close-modal modal-trigger">X</button>
-		<button aria-label="back modal"class="back-modal"><i class="fa-solid fa-arrow-left"></i></button>
 		<div class="modal1_visible">
 			<h1 id="modalTitle">Galerie photo</h1>
 			<div id="dialogDesc" class="galleryModal">					
@@ -31,10 +30,24 @@
 			<button id="bouttonValiderNext"class="buttonAddPic">Ajouter une photo</button>
 			<button class="buttonDelAllPic">Supprimer la galerie</button>
 		</div>
-		<div class="modal2_none">
+		<div id="modal2Form" class="modal2_none">
+		<button id="bouttonValiderBack" aria-label="back modal"class="back-modal"><i class="fa-solid fa-arrow-left"></i></button>
 			<h1 id="modalTitle">Ajout photo</h1>
+			<div class="containerImg">
+				<figure class="image-container">
+					<img id="chosen-image">
+					<figcaption id="file-name"></figcaption>
+				</figure>
 			
-			<input class="modal2ImageInput" type="file" id="imagesAdd" name="images" accept="image/png, image/jpeg">
+				<input type="file" id="upload-button" accept="image/*">
+				<div id="imageLoadDisplay" class="imageLoadVisible">
+				<label for="upload-button" class="uploadZone">
+				<i id ="iconImage" class="fa-regular fa-image fa-4x"></i>
+				<div class="buttonAddPicZone">+ Ajouter photo</div> 
+				jpg, png : 4mo max
+				</label>
+				</div>
+			</div>
 			<label class="modal2TitleInput">Titre</label>
 			<input class="modal2Input" type="text" name="Titre" id="titreAdd">
 			<label class="modal2TitleInput">Catégorie</label>
@@ -45,7 +58,7 @@
 				<option value="Hotels & restaurants">Hotels & restaurants</option>
 			</select>
 			<hr>
-			<input class="buttonValider "type="submit" value="Valider" >
+			<input id="validerImage" class="buttonValider "type="submit" value="Valider" >
 		</div>
 	  </div>
 	

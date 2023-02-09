@@ -98,6 +98,84 @@ const modalContainer = document.querySelector(".modal-container");
 		  modalContainer.classList.toggle("active")
 		}
 
-		
-		
+const buttonNext = document.getElementById("bouttonValiderNext")	
+	
+		buttonNext.addEventListener("click", myFunctionNext);
 
+		function myFunctionNext() {
+			let modalElements = document.querySelectorAll('.modal div');
+			for(let modalElement of modalElements){
+					modalElement.classList.replace("modal1_visible", "modal1_none");
+					modalElement.classList.replace("modal2_none", "modal2_visible");
+				}
+		}
+const buttonBack = document.getElementById("bouttonValiderBack")	
+		
+		buttonBack.addEventListener("click", myFunctionBack);
+		
+		function myFunctionBack() {
+			let modalElements = document.querySelectorAll('.modal div');
+			for(let modalElement of modalElements){
+					modalElement.classList.replace("modal1_none", "modal1_visible");
+					modalElement.classList.replace("modal2_visible", "modal2_none");
+				}
+		}
+		
+let uploadButton = document.getElementById("upload-button");
+let chosenImage = document.getElementById("chosen-image");
+let fileName = document.getElementById("file-name");
+let imageLoadDisplay = document.querySelector('.imageLoadVisible');
+		uploadButton.onchange = () => {
+			let reader = new FileReader();
+			reader.readAsDataURL(uploadButton.files[0]);
+			reader.onload = () => {
+				chosenImage.setAttribute("src",reader.result);
+				imageLoadDisplay.classList.replace("imageLoadVisible", "imageLoadNone");
+			}
+			fileName.textContent = uploadButton.files[0].name;
+		
+		}
+		
+		
+		
+		
+document.getElementById("modal2Form").addEventListener("submit", function(e) {
+			
+			
+			var erreur;
+			
+			var inputs = this.getElementsByTagName("input");
+			console.log(inputs[i]);
+			for (var i = 0; i < inputs.length; i++) {
+				console.log(inputs[i]);
+				if (!inputs[i].value) {
+					erreur = "Veuillez renseigner tous les champs";
+				}
+			}
+			
+			if (erreur) {
+				e.preventDefault();
+				document.getElementById("erreur").innerHTML = erreur;
+				return false;
+			} else {
+				alert('Formulaire envoyé !');
+			}
+			
+			var champImage = document.getElementById("upload-button");
+			var champTitre = document.getElementById("titreAdd");
+			var champCategorie = document.getElementById("categoriesAdd");
+		 
+			if (!champImage.value) {
+				erreur = "Veuillez renseigner une image";
+			}
+			if (!champTitre.value) {
+				erreur = "Veuillez renseigner un Titre";
+			}
+			if (!champCategorie.value) {
+				erreur = "Veuillez renseigner une Catégorie";
+			}
+			
+		
+		});
+		
+		
