@@ -104,9 +104,13 @@ const buttonNext = document.getElementById("bouttonValiderNext")
 
 		function myFunctionNext() {
 			let modalElements = document.querySelectorAll('.modal div');
+			let modalElementsForms = document.querySelectorAll('.modal form');
 			for(let modalElement of modalElements){
 					modalElement.classList.replace("modal1_visible", "modal1_none");
 					modalElement.classList.replace("modal2_none", "modal2_visible");
+				}
+				for(let modalElementsForm of modalElementsForms){
+					modalElementsForm.classList.replace("modal2_none", "modal2_visible");
 				}
 		}
 const buttonBack = document.getElementById("bouttonValiderBack")	
@@ -135,47 +139,36 @@ let imageLoadDisplay = document.querySelector('.imageLoadVisible');
 			fileName.textContent = uploadButton.files[0].name;
 		
 		}
-		
-		
-		
-		
-document.getElementById("modal2Form").addEventListener("submit", function(e) {
-			
-			
-			var erreur;
-			
-			var inputs = this.getElementsByTagName("input");
-			console.log(inputs[i]);
-			for (var i = 0; i < inputs.length; i++) {
-				console.log(inputs[i]);
-				if (!inputs[i].value) {
-					erreur = "Veuillez renseigner tous les champs";
-				}
-			}
-			
-			if (erreur) {
-				e.preventDefault();
-				document.getElementById("erreur").innerHTML = erreur;
-				return false;
-			} else {
-				alert('Formulaire envoyé !');
-			}
-			
-			var champImage = document.getElementById("upload-button");
-			var champTitre = document.getElementById("titreAdd");
-			var champCategorie = document.getElementById("categoriesAdd");
-		 
-			if (!champImage.value) {
-				erreur = "Veuillez renseigner une image";
-			}
-			if (!champTitre.value) {
-				erreur = "Veuillez renseigner un Titre";
-			}
-			if (!champCategorie.value) {
-				erreur = "Veuillez renseigner une Catégorie";
-			}
-			
-		
-		});
-		
-		
+
+
+document.getElementById('form').addEventListener('submit', function(e) {
+	e.preventDefault();
+	
+	const fileInput = document.getElementById('upload-button');
+	const imageFile = fileInput.files[0];
+	const titreAdd = document.getElementById('titreAdd').value;
+	const categorieAdd = document.getElementById('categoriesAdd').value;
+
+	
+	
+	const formData = new FormData();
+	if (imageFile) {
+	  formData.append('imageUrl', imageFile);
+	}
+	formData.append('title', titreAdd);
+	formData.append('categoryId', categorieAdd);
+	console.log(formData)
+	const token = sessionStorage.getItem("token");
+	fetch('http://localhost:5678/api/works', {
+	  method: 'POST',
+	  headers: {
+		'Content-Type': 'multipart/form-data',
+		'Accept': 'application/json',
+		'Authorization': `Bearer ${token}`
+	  },
+	  body: formData
+	})
+	//.then(res => res.json())
+	//.then(data => console.log(data))
+	//.catch(err => console.log(err));
+}) 

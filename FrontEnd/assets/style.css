@@ -636,11 +636,7 @@ hr {
 	height: 100%;
 	margin: auto;
 }
-figcaption{
-	margin: 20px 0 30px 0;
-	text-align: center;
-	color: #2a292a;
-}
+
 input[type="file"]{
 	display: none;
 }
