@@ -711,3 +711,64 @@ input[type="file"]{
 	text-align: center;
 	border-radius: 60px;
 }
+.trashDeleted {
+	color: white;
+	background: #000000;
+	border-radius: 2px; 
+	display: block;
+	position: absolute;
+	padding: 4px;
+	width: 12px;
+	height: 12px;
+	margin-top: 8px;
+	margin-left: 50px;
+	text-align: center;
+	font-size: 11px;
+}
+.arrowsDeletedNone {
+	color: white;
+	background: #000000;
+	border-radius: 2px; 
+	display: block;
+	position: absolute;
+	padding: 4px;
+	width: 12px;
+	height: 12px;
+	margin-top: 8px;
+	margin-left: 25px;
+	text-align: center;
+	font-size: 11px;
+	visibility: hidden;
+}
+
+.arrowsDeletedVisible {
+	color: white;
+	background: #000000;
+	border-radius: 2px; 
+	display: block;
+	position: absolute;
+	padding: 4px;
+	width: 12px;
+	height: 12px;
+	margin-top: 8px;
+	margin-left: 25px;
+	text-align: center;
+	font-size: 11px;
+	visibility: visible;
+	
+}
+#dialogDesc .figureModal:active #arrowSelector {
+	color: white;
+	background: #000000;
+	border-radius: 2px; 
+	display: block;
+	position: absolute;
+	padding: 4px;
+	width: 12px;
+	height: 12px;
+	margin-top: 8px;
+	margin-left: 25px;
+	text-align: center;
+	font-size: 11px;
+	visibility: visible;
+}

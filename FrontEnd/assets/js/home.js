@@ -25,19 +25,26 @@ const worksDisplay = async () => {
 	.join("");
 	document.querySelector('.galleryModal').innerHTML = worksData.map(
 		(works) => 
-		`<figure id="${works.id}" class="displayOn" data-${works.category.name}>
+		`<figure id=${works.id} class="displayOn figureModal" data-${works.category.name}>
+			<i id="arrowSelector" class="arrowsDeletedNone fa-solid fa-arrows-up-down-left-right"></i>
+			<i id="${works.id}" class="trashDeleted fa-solid fa-trash-can"></i>
 		 <div id="${works.categoryId}"></div>
 		 <div id="${works.category.name}"></div>
 		 <div id="${works.userId}"></div>
-		 <img src="${works.imageUrl}" crossOrigin="anonymous"/>
+		 <img class="imgModal" src="${works.imageUrl}" crossOrigin="anonymous"/>
 		 <p>éditer</p>
 		 </figure>
 		`,
 	)
 	.join("");
+	
 };
 	  worksDisplay();
+	  
 
+	  
+	  
+	  
 const worksFilter = async () => {
 	await fetchWorks();
 
@@ -96,7 +103,28 @@ const modalContainer = document.querySelector(".modal-container");
 		
 		function toggleModal(){
 		  modalContainer.classList.toggle("active")
+		  
+		  
+		  const token = sessionStorage.getItem("token");
+			  let idIcons = document.querySelectorAll('.displayOn i');
+			  	for(let idIcon of idIcons){
+					  idIcon.addEventListener("click", function(){
+												console.log(idIcon.id);	
+												fetch(`http://localhost:5678/api/works/${idIcon.id}`, {
+													method: 'DELETE',
+													headers: {
+														'accept': '*/*',
+														'Authorization': `Bearer ${token}`,
+													},
+												}).then(data => location.reload())
+												  .catch(err => console.log(err));			  
+						})
+				  };
+			  
 		}
+
+		
+
 
 const buttonNext = document.getElementById("bouttonValiderNext")	
 	
@@ -113,6 +141,9 @@ const buttonNext = document.getElementById("bouttonValiderNext")
 					modalElementsForm.classList.replace("modal2_none", "modal2_visible");
 				}
 		}
+			
+		
+		
 const buttonBack = document.getElementById("bouttonValiderBack")	
 		
 		buttonBack.addEventListener("click", myFunctionBack);
@@ -141,34 +172,30 @@ let imageLoadDisplay = document.querySelector('.imageLoadVisible');
 		}
 
 
-document.getElementById('form').addEventListener('submit', function(e) {
+const form = document.getElementById('form');
+
+form.addEventListener('submit', function(e) {
 	e.preventDefault();
-	
+	const form = new FormData();
+	const token = sessionStorage.getItem("token");
 	const fileInput = document.getElementById('upload-button');
 	const imageFile = fileInput.files[0];
 	const titreAdd = document.getElementById('titreAdd').value;
 	const categorieAdd = document.getElementById('categoriesAdd').value;
-
+	form.append('image',imageFile);
+	form.append('title', titreAdd);
+	form.append('category', categorieAdd);
 	
-	
-	const formData = new FormData();
-	if (imageFile) {
-	  formData.append('imageUrl', imageFile);
-	}
-	formData.append('title', titreAdd);
-	formData.append('categoryId', categorieAdd);
-	console.log(formData)
-	const token = sessionStorage.getItem("token");
 	fetch('http://localhost:5678/api/works', {
-	  method: 'POST',
-	  headers: {
-		'Content-Type': 'multipart/form-data',
-		'Accept': 'application/json',
-		'Authorization': `Bearer ${token}`
-	  },
-	  body: formData
-	})
-	//.then(res => res.json())
-	//.then(data => console.log(data))
-	//.catch(err => console.log(err));
+		method: 'POST',
+		headers: {
+			'accept': 'application/json',
+			'Authorization': `Bearer ${token}`,
+		},
+		body: form
+	}).then(res => res.json())
+		.then(data => window.location.reload())
+		.catch(err => console.log(err));
+
 }) 
+
