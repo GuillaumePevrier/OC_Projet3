@@ -242,7 +242,7 @@ margin: auto;
 }
 
 
-input[type="submit"]{
+.inputContact{
 	font-family: 'Syne';
 	font-weight: 700;
 	color: white;
@@ -614,6 +614,17 @@ hr {
 	cursor: pointer;
 	margin-top: 32px;
 }
+.buttonValiderOk {
+	width: 237px;
+	height: 36px;
+	background: #1D6154;
+	border-radius: 60px;
+	font-family: 'Work Sans';
+	border: 0px;
+	cursor: pointer;
+	margin-top: 32px;
+	color: white;
+}
 .containerImg{
 	background-color: rgba(232, 241, 246, 1);
 	width: 420px;
@@ -684,33 +695,7 @@ input[type="file"]{
 .imageLoadNone {
 	display: none;
 }
-#validerImageOk {
-	font-family: 'Syne';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 17px;
-	color: white;
-	background-color: #1D6154;
-	margin: 2em auto;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px;
-}
 
-#validerImage {
-	font-family: 'Syne';
-	font-style: normal;
-	font-weight: 700;
-	font-size: 14px;
-	line-height: 17px;
-	color: white;
-	background-color: rgba(167, 167, 167, 1);
-	margin: 2em auto;
-	width: 180px;
-	text-align: center;
-	border-radius: 60px;
-}
 .trashDeleted {
 	color: white;
 	background: #000000;
@@ -724,6 +709,7 @@ input[type="file"]{
 	margin-left: 50px;
 	text-align: center;
 	font-size: 11px;
+	cursor: pointer;
 }
 .arrowsDeletedNone {
 	color: white;

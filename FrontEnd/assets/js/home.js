@@ -1,15 +1,17 @@
 let worksData = [];
-//Récupération des données de l'API et convertis en JSON puis intégré au format ARRAY (tableau)
+
 const fetchWorks = async () => {
 	await fetch("http://localhost:5678/api/works")
 		.then((res) => res.json())
 		.then((promise) => {
 			worksData = promise;		
-		});		
+		});	
+			
 };
 
 const worksDisplay = async () => {
 	await fetchWorks();
+	
 	
 	document.querySelector('.gallery').innerHTML = worksData.map(
 		(works) => 
@@ -39,11 +41,9 @@ const worksDisplay = async () => {
 	.join("");
 	
 };
-	  worksDisplay();
-	  
-
-	  
-	  
+  worksDisplay();
+	
+	 	  
 	  
 const worksFilter = async () => {
 	await fetchWorks();
@@ -109,24 +109,49 @@ const modalContainer = document.querySelector(".modal-container");
 			  let idIcons = document.querySelectorAll('.displayOn i');
 			  	for(let idIcon of idIcons){
 					  idIcon.addEventListener("click", function(){
-												console.log(idIcon.id);	
+				
+												
 												fetch(`http://localhost:5678/api/works/${idIcon.id}`, {
 													method: 'DELETE',
 													headers: {
 														'accept': '*/*',
 														'Authorization': `Bearer ${token}`,
 													},
-												}).then(data => location.reload())
+												}).then(data => worksDisplay())
+												  .then(data => alert("Votre Projet a bien été supprimé"))
 												  .catch(err => console.log(err));			  
 						})
 				  };
 			  
 		}
 
+
+
+
+		let imageInput = document.getElementById('upload-button').value;	
+		let titreAddValidation = document.getElementById('titreAdd').value;
+		let categorieAddValidation = document.getElementById('categoriesAdd').value;
 		
+		
+		// Ajouter EVENEMENT
+		
+			function valideContent() {	
+				if (imageInput.length > 1 && titreAddValidation.length > 1 && categorieAddValidation > 0) {
+				console.log("Validation OK");
+				document.querySelector('.buttonValider').classList.replace("buttonValider", "buttonValiderOk");
+				}								
+			}
+					valideContent();
+					
+					
+					
+					
+					
+					
+					
+					
 
-
-const buttonNext = document.getElementById("bouttonValiderNext")	
+const buttonNext = document.getElementById("bouttonValiderNext");		
 	
 		buttonNext.addEventListener("click", myFunctionNext);
 
@@ -140,9 +165,11 @@ const buttonNext = document.getElementById("bouttonValiderNext")
 				for(let modalElementsForm of modalElementsForms){
 					modalElementsForm.classList.replace("modal2_none", "modal2_visible");
 				}
+				
+				
+			
 		}
 			
-		
 		
 const buttonBack = document.getElementById("bouttonValiderBack")	
 		
@@ -173,7 +200,6 @@ let imageLoadDisplay = document.querySelector('.imageLoadVisible');
 
 
 const form = document.getElementById('form');
-
 form.addEventListener('submit', function(e) {
 	e.preventDefault();
 	const form = new FormData();
@@ -186,6 +212,8 @@ form.addEventListener('submit', function(e) {
 	form.append('title', titreAdd);
 	form.append('category', categorieAdd);
 	
+	
+	
 	fetch('http://localhost:5678/api/works', {
 		method: 'POST',
 		headers: {
@@ -194,8 +222,9 @@ form.addEventListener('submit', function(e) {
 		},
 		body: form
 	}).then(res => res.json())
-		.then(data => window.location.reload())
+		.then(data => worksDisplay())
+		.then(data => alert("Votre Projet a bien été ajouté"))
+		.then(data => location.reload())
 		.catch(err => console.log(err));
 
 }) 
-
