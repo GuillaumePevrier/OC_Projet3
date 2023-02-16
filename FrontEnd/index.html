@@ -33,13 +33,14 @@
 			<div id="modal2Form" class="modal2_none">
 		 <button id="bouttonValiderBack" aria-label="back modal"class="back-modal"><i class="fa-solid fa-arrow-left"></i></button>
 				<h1 id="modalTitle">Ajout photo</h1>
+				<p id="values"></p>
 				<form id="form" action="" method="post" class="modal2_none">
 					<div class="containerImg">
 						<figure class="image-container">
 							<img id="chosen-image">
 							<figcaption id="file-name"></figcaption>
 							</figure>		
-							<input class="uploadButtonClass" type="file" id="upload-button" accept="image/*">
+							<input class="uploadButtonClass" type="file" id="upload-button" accept="image/*" onchange="valideContent()">
 							<div id="imageLoadDisplay" class="imageLoadVisible">
 								<label for="upload-button" class="uploadZone">
 								<i id ="iconImage" class="fa-regular fa-image fa-4x"></i>
@@ -49,9 +50,9 @@
 							</div>
 					</div>
 							<label class="modal2TitleInput">Titre</label>
-							<input class="modal2Input" type="text" name="Titre" id="titreAdd">
+							<input class="modal2InputTitre" type="text" name="Titre" id="titreAdd" onchange="valideContent()">
 							<label class="modal2TitleInput">Catégorie</label>
-							<select class="modal2Input" name="categories" id="categoriesAdd">
+							<select class="modal2InputCategorie" name="categories" id="categoriesAdd" onchange="valideContent()">
 				<option value=""></option>
 				<option value="1">Objets</option>
 				<option value="2">Appartements</option>

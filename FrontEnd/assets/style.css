@@ -596,7 +596,28 @@ hr {
 	margin-top: 10px;
 	margin-bottom: 21px;
 }
-
+.modal2InputTitre {
+	
+	width: 420px;
+	height: 51px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: 0px;
+	color: rgba(108, 108, 108, 1);
+	margin-top: 10px;
+	margin-bottom: 21px;
+}
+.modal2InputCategorie {
+	
+	width: 420px;
+	height: 51px;
+	background: #FFFFFF;
+	box-shadow: 0px 4px 14px rgba(0, 0, 0, 0.09);
+	border: 0px;
+	color: rgba(108, 108, 108, 1);
+	margin-top: 10px;
+	margin-bottom: 21px;
+}
 .modal2ImageInput {
 	width: 420px;
 	height: 129px;
@@ -613,6 +634,7 @@ hr {
 	border: 0px;
 	cursor: pointer;
 	margin-top: 32px;
+	color: white;
 }
 .buttonValiderOk {
 	width: 237px;
